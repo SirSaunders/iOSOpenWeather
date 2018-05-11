@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
+    var weatherDataArray: [Dictionary<String,Any>]? = []
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -18,7 +18,7 @@ class ViewController: UIViewController {
                 (postalCode) -> Void in
                 getWeatherData(postalCode: postalCode,completionHandler: {
                     (weatherData) -> Void in
-                    print(weatherData)
+                    self.weatherDataArray = weatherJsonToArray(json:weatherData) as! [Dictionary<String, Any>]
                 })
         })
         

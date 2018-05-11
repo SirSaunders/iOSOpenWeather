@@ -11,7 +11,7 @@ func getWeatherData(postalCode:String,completionHandler:  @escaping (String) -> 
     let headers = [
         "Cache-Control": "no-cache",
     ]
-    let request = NSMutableURLRequest(url: NSURL(string: "https://api.openweathermap.org/data/2.5/forecast?zip="+postalCode+",us&appid=" + apiKey)! as URL,
+    let request = NSMutableURLRequest(url: NSURL(string: "https://api.openweathermap.org/data/2.5/forecast?zip="+postalCode+",us&units=imperial&appid=" + apiKey)! as URL,
                                       cachePolicy: .useProtocolCachePolicy,
                                       timeoutInterval: 10.0)
     request.httpMethod = "GET"
@@ -22,10 +22,29 @@ func getWeatherData(postalCode:String,completionHandler:  @escaping (String) -> 
             print(error)
     
         } else {
-            let httpResponse = response as? HTTPURLResponse
             completionHandler(NSString(data: data!, encoding: String.Encoding.utf8.rawValue) as! String)
         }
     })
-    
     dataTask.resume()
 }
+
+/*
+ Given the json retrived from openweathermap.org as a string this method will
+ @return the list of 5 days as an array<any>
+ */
+func weatherJsonToArray(json:String) -> Array<Any>{
+    let data = json.data(using: .utf8)!
+    do {//converts json string to JsonObject
+         let jsonArray = try JSONSerialization.jsonObject(with: data, options : [])
+     if let dictionary = jsonArray as? [String: Any] {
+        return (dictionary["list"] as! [Dictionary<String, AnyObject>] ) // gets list of weather for next 5days
+     }else{
+        print("nope")
+        }
+    } catch let error as NSError {
+        print(error)
+    }
+    return Array() //return empty arry, converting json to array failed
+}
+
+
