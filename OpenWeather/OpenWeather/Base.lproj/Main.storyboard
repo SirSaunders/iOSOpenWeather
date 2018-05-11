@@ -57,10 +57,15 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uMH-T0-Hzm">
+                                                    <rect key="frame" x="282" y="0.0" width="43" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="dateTime" destination="wwe-E1-322" id="eUC-kz-7yX"/>
+                                            <outlet property="icon" destination="uMH-T0-Hzm" id="Ut7-b2-pHW"/>
                                             <outlet property="tempHi" destination="lFD-KA-1hu" id="ByD-31-8CU"/>
                                             <outlet property="tempLo" destination="DBG-Wz-MeM" id="aSy-6s-lpA"/>
                                             <outlet property="weatherDesc" destination="d3S-J2-Dnj" id="pru-kx-yvf"/>
@@ -88,6 +93,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="32.799999999999997" y="32.833583208395808"/>
         </scene>
     </scenes>
 </document>
