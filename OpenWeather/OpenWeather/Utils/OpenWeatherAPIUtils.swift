@@ -32,12 +32,12 @@ func getWeatherData(postalCode:String,completionHandler:  @escaping (String) -> 
  Given the json retrived from openweathermap.org as a string this method will
  @return the list of 5 days as an array<any>
  */
-func weatherJsonToArray(json:String) -> Array<Any>{
+func weatherJsonToArray(json:String) -> Array<Dictionary<String, AnyObject>>{
     let data = json.data(using: .utf8)!
     do {//converts json string to JsonObject
          let jsonArray = try JSONSerialization.jsonObject(with: data, options : [])
      if let dictionary = jsonArray as? [String: Any] {
-        return (dictionary["list"] as! [Dictionary<String, AnyObject>] ) // gets list of weather for next 5days
+        return (dictionary["list"] as! Array<Dictionary<String, AnyObject>> ) // gets list of weather for next 5days
      }else{
         print("nope")
         }
