@@ -55,7 +55,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let weatherDictData = (weatherData["weather"] as! Array<Dictionary<String,Any>>)[0]
         cell.setTempHi(temp: mainData["temp_max"]! as! Double)
         cell.setTempLo(temp: mainData["temp_min"]! as! Double)
-        cell.setWeatherDesc(temp: weatherDictData["description"] as! String)
+        cell.setWeatherDesc(desc: weatherDictData["description"] as! String)
+        cell.setDateTime(time: weatherData["dt_txt"] as! String)
         cell.setIcon(iconCode: String(describing: weatherDictData["icon"]))
         return cell
 
