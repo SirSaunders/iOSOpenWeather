@@ -9,20 +9,27 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-       let location = getCurrentLocation()
-        getPostalCodeFromCoordinates(latitude: location.latitude,longitude: location.longitude,
-                           completionHandler: { (postalCode) -> Void in print(postalCode)})
+        let location = getCurrentLocation()
+        getPostalCodeFromCoordinates(latitude: location.latitude,longitude: location.longitude,completionHandler: {
+                (postalCode) -> Void in
+                getWeatherData(postalCode: postalCode,completionHandler: {
+                    (weatherData) -> Void in
+                    print(weatherData)
+                })
+        })
+        
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    
 }
 

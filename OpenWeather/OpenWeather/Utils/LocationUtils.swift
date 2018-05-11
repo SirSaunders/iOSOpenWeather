@@ -41,5 +41,6 @@ func getPostalCodeFromCoordinates(latitude: Double, longitude: Double,completion
         placeMark = placemarks?[0]
         //return postal code
         completionHandler(placeMark.postalCode!)
+        //todo: error is not handled, could cause a lock up as this function may never complete in some cases.
     })
 }
