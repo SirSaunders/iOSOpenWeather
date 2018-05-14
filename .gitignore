@@ -5,7 +5,7 @@
 ## Build generated
 build/
 DerivedData/
-Keys.swift
+##Keys.swift ## temp commented out
 ## Various settings
 *.pbxuser
 !default.pbxuser
